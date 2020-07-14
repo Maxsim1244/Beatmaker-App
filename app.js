@@ -7,6 +7,7 @@ class DrumKit {
     this.hihatAudio = document.querySelector(".hihat-sound");
     this.index = 0;
     this.bpm = 150;
+    this.isPlaying = null;
   }
   ActivePad() {
     this.classList.toggle("active");
@@ -36,9 +37,16 @@ class DrumKit {
   }
   Start() {
     const interval = (60 / this.bpm) * 1000;
-    setInterval(() => {
-      this.Repeat();
-    }, interval);
+    if (!this.isPlaying) {
+      this.playBtn.innerText = "Stop";
+      this.isPlaying = setInterval(() => {
+        this.Repeat();
+      }, interval);
+    } else {
+      clearInterval(this.isPlaying);
+      this.isPlaying = null;
+      this.playBtn.innerText = "Play";
+    }
   }
 }
 
