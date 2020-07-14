@@ -103,6 +103,9 @@ select {
   margin-left: 1rem;
   flex: 1;
 }
+h1 {
+  flex: 1;
+}
 
 .mute {
   margin-left: 1rem;
