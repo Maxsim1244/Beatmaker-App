@@ -12,6 +12,7 @@ class DrumKit {
     this.currentHihat = "./sounds/hihat-acoustic01.wav";
     this.currentSnare = "./sounds/snare-acoustiv01.wav";
     this.selects = document.querySelectorAll("select");
+    this.muteBtns = document.querySelectorAll(".mute");
   }
   ActivePad() {
     this.classList.toggle("active");
@@ -62,10 +63,38 @@ class DrumKit {
         break;
       case "snare-select":
         this.snareAudio.src = selectValue;
-        break;
       case "hihat-select":
         this.hihatAudio.src = selectValue;
         break;
+    }
+  }
+  Mute(e) {
+    const muteIndex = e.target.getAttribute("data-track");
+    e.target.classList.toggle("active");
+    if (e.target.classList.contains("active")) {
+      switch (muteIndex) {
+        case "0":
+          this.kickAudio.volume = 0;
+          break;
+        case "1":
+          this.snareAudio.volume = 0;
+          break;
+        case "2":
+          this.hihatAudio.volume = 0;
+          break;
+      }
+    } else {
+      switch (muteIndex) {
+        case "0":
+          this.kickAudio.volume = 1;
+          break;
+        case "1":
+          this.snareAudio.volume = 1;
+          break;
+        case "2":
+          this.hihatAudio.volume = 1;
+          break;
+      }
     }
   }
 }
@@ -86,5 +115,10 @@ drumKit.playBtn.addEventListener("click", function () {
 drumKit.selects.forEach((select) => {
   select.addEventListener("change", function (e) {
     drumKit.ChamgeSound(e);
+  });
+});
+drumKit.muteBtns.forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    drumKit.Mute(e);
   });
 });
