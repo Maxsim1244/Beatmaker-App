@@ -1,3 +1,4 @@
+"use stict";
 class DrumKit {
   constructor() {
     this.playBtn = document.querySelector(".play");
@@ -68,7 +69,6 @@ class DrumKit {
   }
   ChamgeSound(e) {
     const selectName = e.target.name;
-    console.log(selectName);
     const selectValue = e.target.value;
     switch (selectName) {
       case "kick-select":
@@ -76,6 +76,7 @@ class DrumKit {
         break;
       case "snare-select":
         this.snareAudio.src = selectValue;
+        break;
       case "hihat-select":
         this.hihatAudio.src = selectValue;
         break;
@@ -102,10 +103,10 @@ class DrumKit {
           this.hihatAudio.volume = 0;
           break;
         case "3":
-          this.hihatAudio.volume = 0;
+          this.percAudio.volume = 0;
           break;
         case "4":
-          this.hihatAudio.volume = 0;
+          this.claptAudio.volume = 0;
           break;
       }
     } else {
@@ -120,10 +121,10 @@ class DrumKit {
           this.hihatAudio.volume = 1;
           break;
         case "3":
-          this.hihatAudio.volume = 1;
+          this.percAudio.volume = 1;
           break;
         case "4":
-          this.hihatAudio.volume = 1;
+          this.clapAudio.volume = 1;
           break;
       }
     }
