@@ -13,6 +13,7 @@ class DrumKit {
     this.currentSnare = "./sounds/snare-acoustiv01.wav";
     this.selects = document.querySelectorAll("select");
     this.muteBtns = document.querySelectorAll(".mute");
+    this.tempSlider = document.querySelector(".temp-slider");
   }
   ActivePad() {
     this.classList.toggle("active");
@@ -97,6 +98,17 @@ class DrumKit {
       }
     }
   }
+  ChangeTemp(e) {
+    const tempText = document.querySelector(".temp-nr");
+    this.bpm = e.target.value;
+    tempText.innerHTML = e.target.value;
+    clearInterval(this.isPlaying);
+    this.isPlaying = null;
+    const playBtn = document.querySelector(".play");
+    if (playBtn.innerText === "Stop") {
+      this.Start();
+    }
+  }
 }
 
 const drumKit = new DrumKit();
@@ -121,4 +133,7 @@ drumKit.muteBtns.forEach((btn) => {
   btn.addEventListener("click", function (e) {
     drumKit.Mute(e);
   });
+});
+drumKit.tempSlider.addEventListener("input", function (e) {
+  drumKit.ChangeTemp(e);
 });
