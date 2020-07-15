@@ -1,4 +1,3 @@
-"use stict";
 class DrumKit {
   constructor() {
     this.playBtn = document.querySelector(".play");
