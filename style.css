@@ -15,7 +15,9 @@ svg {
 
 .kick-pad,
 .snare-pad,
-.hihat-pad {
+.hihat-pad,
+.perc-pad,
+.clap-pad {
   width: 5rem;
   height: 5rem;
   margin: 1rem 0.5rem;
@@ -39,19 +41,29 @@ svg {
 .hihat-pad {
   background: rgb(238, 209, 154);
 }
+.perc-pad {
+  background: rgb(78, 78, 78);
+}
+.clap-pad {
+  background: rgb(250, 122, 122);
+}
 
 .hihat-track,
 .snare-track,
-.kick-track {
+.kick-track,
+.perc-track,
+.clap-track {
   width: 70%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 .kick,
 .snare,
-.hihat {
+.hihat,
+.clap,
+.perc {
   display: flex;
 }
 
@@ -85,6 +97,12 @@ svg {
 }
 .hihat-pad.active {
   background: orange;
+}
+.perc-pad.active {
+  background: black;
+}
+.clap-pad.active {
+  background: red;
 }
 
 .play {
@@ -130,7 +148,7 @@ h1 {
   border-radius: 1rem;
 }
 
-temp p {
+.temp p {
   font-size: 1.5rem;
   margin: 2rem;
   text-align: center;

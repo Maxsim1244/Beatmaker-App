@@ -5,12 +5,16 @@ class DrumKit {
     this.kickAudio = document.querySelector(".kick-sound");
     this.snareAudio = document.querySelector(".snare-sound");
     this.hihatAudio = document.querySelector(".hihat-sound");
+    this.percAudio = document.querySelector(".perc-sound");
+    this.clapAudio = document.querySelector(".clap-sound");
     this.index = 0;
     this.bpm = 150;
     this.isPlaying = null;
     this.currentKick = "./sounds/kick-classic.wav";
     this.currentHihat = "./sounds/hihat-acoustic01.wav";
     this.currentSnare = "./sounds/snare-acoustiv01.wav";
+    this.currentPerc = "./sounds/perc-laser.wav";
+    this.currentClap = "./sounds/clap-analog.wav";
     this.selects = document.querySelectorAll("select");
     this.muteBtns = document.querySelectorAll(".mute");
     this.tempSlider = document.querySelector(".temp-slider");
@@ -36,6 +40,14 @@ class DrumKit {
         if (bar.classList.contains("hihat-pad")) {
           this.hihatAudio.currentTime = 0;
           this.hihatAudio.play();
+        }
+        if (bar.classList.contains("perc-pad")) {
+          this.percAudio.currentTime = 0;
+          this.percAudio.play();
+        }
+        if (bar.classList.contains("clap-pad")) {
+          this.clapAudio.currentTime = 0;
+          this.clapAudio.play();
         }
       }
     });
@@ -67,6 +79,12 @@ class DrumKit {
       case "hihat-select":
         this.hihatAudio.src = selectValue;
         break;
+      case "perc-select":
+        this.percAudio.src = selectValue;
+        break;
+      case "clap-select":
+        this.clapAudio.src = selectValue;
+        break;
     }
   }
   Mute(e) {
@@ -83,6 +101,12 @@ class DrumKit {
         case "2":
           this.hihatAudio.volume = 0;
           break;
+        case "3":
+          this.hihatAudio.volume = 0;
+          break;
+        case "4":
+          this.hihatAudio.volume = 0;
+          break;
       }
     } else {
       switch (muteIndex) {
@@ -93,6 +117,12 @@ class DrumKit {
           this.snareAudio.volume = 1;
           break;
         case "2":
+          this.hihatAudio.volume = 1;
+          break;
+        case "3":
+          this.hihatAudio.volume = 1;
+          break;
+        case "4":
           this.hihatAudio.volume = 1;
           break;
       }
